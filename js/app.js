@@ -1,7 +1,11 @@
 /*
- * Create a list that holds all of your cards
+ * Create a list that holds all of your cards.
+ * With the spread operator is possible for the shuffle function to easily
+ * access the single card elements.
  */
 
+let card = document.querySelectorAll('li.card');
+let cardsArray = [...card];
 
 /*
  * Display the cards on the page
