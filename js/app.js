@@ -3,9 +3,9 @@
  * With the spread operator is possible for the shuffle function to easily
  * access the single card elements.
  */
-
-let card = document.querySelectorAll('li.card');
-let cardsArray = [...card];
+let deck = document.querySelector('.deck')
+let card = deck.querySelectorAll('li.card');
+let beginCards = [...card];
 
 /*
  * Display the cards on the page
@@ -13,6 +13,24 @@ let cardsArray = [...card];
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+function startGame() {
+
+  let shuffledCards = shuffle(beginCards);
+  let fragment = document.createDocumentFragment();
+
+  for(let card of shuffledCards) {
+    deck.removeChild(deck.firstElementChild);
+    let li = document.createElement('li');
+    li.className = "card";
+    let i = document.createElement('i');
+    i.className = card.firstElementChild.classList.value;
+    li.appendChild(i);
+    fragment.appendChild(li);
+  }
+
+  deck.appendChild(fragment);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -29,7 +47,7 @@ function shuffle(array) {
     return array;
 }
 
-
+startGame()
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
