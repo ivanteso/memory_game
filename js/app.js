@@ -27,6 +27,9 @@ function startGame() {
     i.className = card.firstElementChild.classList.value;
     li.appendChild(i);
     fragment.appendChild(li);
+    li.addEventListener('click', function() {
+      console.log('clicked')
+    });
   }
 
   deck.appendChild(fragment);
