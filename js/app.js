@@ -7,6 +7,8 @@ let deck = document.querySelector('.deck')
 let card = deck.querySelectorAll('li.card');
 let beginCards = [...card];
 
+let checkArray = [];
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -48,10 +50,20 @@ function shuffle(array) {
     return array;
 }
 
+// Flip function to flip the cards when clicked
+
 function flip() {
-  this.classList.toggle('open');
-  this.classList.toggle('show');
-  this.removeEventListener('click', flip);
+  let clicked = this;
+  clicked.classList.toggle('open');
+  clicked.classList.toggle('show');
+  clicked.removeEventListener('click', flip);
+  storeCard(clicked);
+}
+
+// Store the clicked card into checkArray
+
+function storeCard(a) {
+  checkArray.push(a);
 }
 
 startGame()
