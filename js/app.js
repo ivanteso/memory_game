@@ -27,9 +27,7 @@ function startGame() {
     i.className = card.firstElementChild.classList.value;
     li.appendChild(i);
     fragment.appendChild(li);
-    li.addEventListener('click', function() {
-      console.log('clicked')
-    });
+    li.addEventListener('click', flip);
   }
 
   deck.appendChild(fragment);
@@ -48,6 +46,12 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+function flip() {
+  this.classList.toggle('open');
+  this.classList.toggle('show');
+  this.removeEventListener('click', flip);
 }
 
 startGame()
