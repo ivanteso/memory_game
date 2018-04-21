@@ -58,12 +58,33 @@ function flip() {
   clicked.classList.toggle('show');
   clicked.removeEventListener('click', flip);
   storeCard(clicked);
+  checkCards();
 }
 
 // Store the clicked card into checkArray
 
 function storeCard(a) {
   checkArray.push(a);
+}
+
+/*
+** Check class values of the first two elements into the checkArray
+** and do some stuff depending of the comparison result
+*/
+
+function checkCards() {
+
+  if (checkArray.length > 1) {
+    let firstClass = checkArray[0].firstElementChild.classList.value;
+    let secondClass = checkArray[1].firstElementChild.classList.value;
+    if(firstClass === secondClass) {
+      console.log('bravo');
+      checkArray = [];
+    } else {
+      console.log('riprova');
+      checkArray = [];
+    }
+  }
 }
 
 startGame()
