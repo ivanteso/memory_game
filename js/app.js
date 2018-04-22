@@ -109,9 +109,7 @@ function unmatch() {
 */
 
 function match() {
-//  checkArray[0].classList.remove('open');
   checkArray[0].classList.remove('show');
-//  checkArray[1].classList.remove('open');
   checkArray[1].classList.remove('show');
   checkArray[0].classList.add('match');
   checkArray[1].classList.add('match');
