@@ -82,9 +82,19 @@ function checkCards() {
       checkArray = [];
     } else {
       console.log('riprova');
+      unmatch();
       checkArray = [];
     }
   }
+}
+
+function unmatch() {
+  checkArray[0].classList.remove('open');
+  checkArray[0].classList.remove('show');
+  checkArray[1].classList.remove('open');
+  checkArray[1].classList.remove('show');
+  checkArray[0].addEventListener('click', flip);
+  checkArray[1].addEventListener('click', flip);
 }
 
 startGame()
