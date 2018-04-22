@@ -8,6 +8,7 @@ let card = deck.querySelectorAll('li.card');
 let beginCards = [...card];
 
 let checkArray = [];
+let matchArray = [];
 
 /*
  * Display the cards on the page
@@ -79,6 +80,7 @@ function checkCards() {
     let secondClass = checkArray[1].firstElementChild.classList.value;
     if(firstClass === secondClass) {
       console.log('bravo');
+      match();
       checkArray = [];
     } else {
       console.log('riprova');
@@ -88,6 +90,11 @@ function checkCards() {
   }
 }
 
+/*
+** Remove classes and add again event listener to the 2 cards clicked
+** stored in the checkArray if their class don't match
+*/
+
 function unmatch() {
   checkArray[0].classList.remove('open');
   checkArray[0].classList.remove('show');
@@ -95,6 +102,20 @@ function unmatch() {
   checkArray[1].classList.remove('show');
   checkArray[0].addEventListener('click', flip);
   checkArray[1].addEventListener('click', flip);
+}
+
+/*
+**
+*/
+
+function match() {
+//  checkArray[0].classList.remove('open');
+  checkArray[0].classList.remove('show');
+//  checkArray[1].classList.remove('open');
+  checkArray[1].classList.remove('show');
+  checkArray[0].classList.add('match');
+  checkArray[1].classList.add('match');
+  matchArray.push(checkArray[0], checkArray[1]);
 }
 
 startGame()
