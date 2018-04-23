@@ -63,7 +63,6 @@ function flip() {
   clicked.removeEventListener('click', flip);
   storeCard(clicked);
   checkCards();
-  movesCounter();
 }
 
 /*
@@ -98,9 +97,9 @@ function checkCards() {
       checkArray = [];
     } else {
       console.log('riprova');
-      unmatch();
-      checkArray = [];
+      setTimeout(unmatch, 750);
     }
+    movesCounter();
   }
 }
 
@@ -110,12 +109,13 @@ function checkCards() {
 */
 
 function unmatch() {
-  checkArray[0].classList.remove('open');
-  checkArray[0].classList.remove('show');
-  checkArray[1].classList.remove('open');
-  checkArray[1].classList.remove('show');
+  checkArray[0].classList.toggle('open');
+  checkArray[1].classList.toggle('open');
+  checkArray[0].classList.toggle('show');
+  checkArray[1].classList.toggle('show');
   checkArray[0].addEventListener('click', flip);
   checkArray[1].addEventListener('click', flip);
+  checkArray = [];
 }
 
 /*
