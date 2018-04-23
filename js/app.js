@@ -10,6 +10,9 @@ let beginCards = [...card];
 let checkArray = [];
 let matchArray = [];
 
+let moves = 0;
+let counter = document.querySelector('.moves');
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -60,6 +63,17 @@ function flip() {
   clicked.removeEventListener('click', flip);
   storeCard(clicked);
   checkCards();
+  movesCounter();
+}
+
+/*
+** Take track of the clicks and increment their number, than set the new value
+** on the HTML counter via textContent
+*/
+
+function movesCounter() {
+  moves++;
+  counter.textContent = moves;
 }
 
 // Store the clicked card into checkArray
@@ -105,7 +119,8 @@ function unmatch() {
 }
 
 /*
-**
+** Remove 'show' class and add 'match' class when two cards match each other
+** then push the two cards into a new array called matchArray
 */
 
 function match() {
