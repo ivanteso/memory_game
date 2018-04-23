@@ -13,6 +13,10 @@ let matchArray = [];
 let moves = 0;
 let counter = document.querySelector('.moves');
 
+let firstStar = document.getElementById('first');
+let secondStar = document.getElementById('second');
+let thirdStar = document.getElementById('third');
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -65,16 +69,6 @@ function flip() {
   checkCards();
 }
 
-/*
-** Take track of the clicks and increment their number, than set the new value
-** on the HTML counter via textContent
-*/
-
-function movesCounter() {
-  moves++;
-  counter.textContent = moves;
-}
-
 // Store the clicked card into checkArray
 
 function storeCard(a) {
@@ -100,6 +94,34 @@ function checkCards() {
       setTimeout(unmatch, 750);
     }
     movesCounter();
+    rating();
+  }
+}
+
+/*
+** Take track of the clicks and increment their number, than set the new value
+** on the HTML counter via textContent
+*/
+
+function movesCounter() {
+  moves++;
+  counter.textContent = moves;
+}
+
+/*
+**
+*/
+
+function rating() {
+  if (moves === 9) {
+    thirdStar.classList.remove('fa-star');
+    thirdStar.classList.add('fa-star-o');
+  } else if (moves === 14) {
+    secondStar.classList.remove('fa-star');
+    secondStar.classList.add('fa-star-o');
+  } else if (moves === 19) {
+    firstStar.classList.remove('fa-star');
+    firstStar.classList.add('fa-star-o');
   }
 }
 
