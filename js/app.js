@@ -62,11 +62,12 @@ function shuffle(array) {
 
 function flip() {
   let clicked = this;
+  storeCard(clicked);
+  checkCards();
   clicked.classList.toggle('open');
   clicked.classList.toggle('show');
   clicked.removeEventListener('click', flip);
-  storeCard(clicked);
-  checkCards();
+
 }
 
 // Store the clicked card into checkArray
@@ -82,7 +83,7 @@ function storeCard(a) {
 
 function checkCards() {
 
-  if (checkArray.length > 1) {
+  if (checkArray.length > 1 && checkArray.length <= 2) {
     let firstClass = checkArray[0].firstElementChild.classList.value;
     let secondClass = checkArray[1].firstElementChild.classList.value;
     if(firstClass === secondClass) {
@@ -91,10 +92,13 @@ function checkCards() {
       checkArray = [];
     } else {
       console.log('riprova');
-      setTimeout(unmatch, 750);
+      setTimeout(unmatch, 500); // slow the class removement to see animation
     }
     movesCounter();
     rating();
+  } else if (checkArray.length >= 3) {
+    // doesn't show any card class after the 2nd clicked
+    clearArray();
   }
 }
 
@@ -131,10 +135,10 @@ function rating() {
 */
 
 function unmatch() {
-  checkArray[0].classList.toggle('open');
-  checkArray[1].classList.toggle('open');
-  checkArray[0].classList.toggle('show');
-  checkArray[1].classList.toggle('show');
+  checkArray[0].classList.remove('open');
+  checkArray[1].classList.remove('open');
+  checkArray[0].classList.remove('show');
+  checkArray[1].classList.remove('show');
   checkArray[0].addEventListener('click', flip);
   checkArray[1].addEventListener('click', flip);
   checkArray = [];
@@ -151,6 +155,19 @@ function match() {
   checkArray[0].classList.add('match');
   checkArray[1].classList.add('match');
   matchArray.push(checkArray[0], checkArray[1]);
+}
+
+/*
+** If the clicks are too fast, avoid to open a third card and also fix an
+** undefined returned value because of the animation delay of the unmatch
+** function called on checkCards()
+*/
+
+function clearArray() {
+  checkArray[2].classList.remove('open');
+  checkArray[2].classList.remove('show');
+  checkArray[3].classList.remove('open');
+  checkArray[3].classList.remove('show');
 }
 
 startGame()
