@@ -10,13 +10,18 @@ let beginCards = [...card];
 let checkArray = [];
 let matchArray = [];
 
-let moves = 0;
+let moves;
 let counter = document.querySelector('.moves');
 
 let firstStar = document.getElementById('first');
 let secondStar = document.getElementById('second');
 let thirdStar = document.getElementById('third');
 
+let seconds = document.getElementById('sec');
+let minutes = document.getElementById('min');
+let sec;
+let min;
+let firstClick;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -28,6 +33,16 @@ function startGame() {
 
   let shuffledCards = shuffle(beginCards);
   let fragment = document.createDocumentFragment();
+
+  moves = 0;
+  counter.innerText = 0;
+
+  sec = 0
+  min = 0
+  seconds.innerText = 0;
+  minutes.innerText = 0;
+  firstClick = true;
+
 
   for(let card of shuffledCards) {
     deck.removeChild(deck.firstElementChild);
@@ -64,6 +79,10 @@ function flip() {
   let clicked = this;
   storeCard(clicked);
   checkCards();
+  if (firstClick === true) {
+    timer();
+    firstClick = false;
+  }
   clicked.classList.toggle('open');
   clicked.classList.toggle('show');
   clicked.removeEventListener('click', flip);
@@ -113,23 +132,6 @@ function movesCounter() {
 }
 
 /*
-**
-*/
-
-function rating() {
-  if (moves === 9) {
-    thirdStar.classList.remove('fa-star');
-    thirdStar.classList.add('fa-star-o');
-  } else if (moves === 14) {
-    secondStar.classList.remove('fa-star');
-    secondStar.classList.add('fa-star-o');
-  } else if (moves === 19) {
-    firstStar.classList.remove('fa-star');
-    firstStar.classList.add('fa-star-o');
-  }
-}
-
-/*
 ** Remove classes and add again event listener to the 2 cards clicked
 ** stored in the checkArray if their class don't match
 */
@@ -170,7 +172,43 @@ function clearArray() {
   checkArray[3].classList.remove('show');
 }
 
+/*
+** Based on the moves number remove the plai star class and add the
+** empty star class. 3 plain stars is the perfect game, and so on
+*/
+
+function rating() {
+  if (moves === 9) {
+    thirdStar.classList.remove('fa-star');
+    thirdStar.classList.add('fa-star-o');
+  } else if (moves === 14) {
+    secondStar.classList.remove('fa-star');
+    secondStar.classList.add('fa-star-o');
+  } else if (moves === 19) {
+    firstStar.classList.remove('fa-star');
+    firstStar.classList.add('fa-star-o');
+  }
+}
+
+
+/*
+** Timer function that sets text for 'sec' and 'min' ids in the html
+** sheet. This function is called by flip function only at the first
+** click
+*/
+
+function timer() {
+  setInterval(function() {
+        seconds.innerText++;
+        if (seconds.innerText == 60) {
+            minutes.innerText++;
+            seconds.innerText = 0;
+        }
+    }, 1000);
+}
+
 startGame()
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
