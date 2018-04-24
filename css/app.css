@@ -55,7 +55,7 @@ h1 {
     height: 125px;
     width: 125px;
     background: #2e3d49;
-    font-size: 20px;
+    font-size: 0;
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
@@ -89,8 +89,11 @@ h1 {
  */
 
 .score-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     text-align: left;
-    width: 345px;
+    width: 70%;
     margin-bottom: 10px;
 }
 
