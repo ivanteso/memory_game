@@ -20,6 +20,7 @@ reset.addEventListener('click', startGame);
 const firstStar = document.getElementById('first');
 const secondStar = document.getElementById('second');
 const thirdStar = document.getElementById('third');
+let starsNumber;
 
 // Getting elements for timer and define firstclick
 const seconds = document.getElementById('sec');
@@ -39,6 +40,8 @@ const minutesNumber = document.getElementById('final_minutes_number');
 const minutesText = document.getElementById('final_minutes_text');
 const secondsNumber = document.getElementById('final_seconds_number');
 const secondsText = document.getElementById('final_seconds_text');
+const finalStarsNumber = document.getElementById('final_stars_number');
+const finalStarsText = document.getElementById('final_stars_text');
 const movesNumber = document.getElementById('final_moves_number');
 const modalButton = document.getElementById('restartModal');
 // When the user clicks on <span> (x), close the modal
@@ -142,13 +145,14 @@ function checkCards() {
     let secondClass = checkArray[1].firstElementChild.classList.value;
     if(firstClass === secondClass) {
       movesCounter();
+      rating();
       match();
       checkArray = [];
     } else {
       movesCounter();
+      rating();
       setTimeout(unmatch, 500); // slow the class removement to see animation
     }
-    rating();
   } else if (checkArray.length >= 3) {
     // doesn't show any card class after the 2nd clicked
     clearArray();
@@ -221,15 +225,16 @@ function clearArray() {
 */
 
 function rating() {
-  if (moves === 9) {
-    //thirdStar.classList.remove('fa-star');
-    thirdStar.classList.toggle('fa-star-o');
-  } else if (moves === 14) {
-    //secondStar.classList.remove('fa-star');
-    secondStar.classList.toggle('fa-star-o');
-  } else if (moves === 19) {
-    //firstStar.classList.remove('fa-star');
-    firstStar.classList.toggle('fa-star-o');
+  starsNumber = 3;
+  if (moves >= 10 && moves < 15) {
+    thirdStar.classList.add('fa-star-o');
+    starsNumber = 2;
+  } else if (moves >= 15 && moves <20) {
+    secondStar.classList.add('fa-star-o');
+    starsNumber = 1;
+  } else if (moves >= 20) {
+    firstStar.classList.add('fa-star-o');
+    starsNumber = 0;
   }
 }
 
@@ -281,6 +286,12 @@ function endGame() {
     secondsText.innerText = ' seconds';
   }
   movesNumber.innerText = moves;
+  finalStarsNumber.innerText = starsNumber;
+  if (starsNumber === 1) {
+    finalStarsText.innerText = ' star';
+  } else {
+    finalStarsText.innerText = ' stars';
+  }
 }
 
 
