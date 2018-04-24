@@ -3,22 +3,26 @@
  * With the spread operator is possible for the shuffle function to easily
  * access the single card elements.
  */
-let deck = document.querySelector('.deck')
-let card = deck.querySelectorAll('li.card');
+const  deck = document.querySelector('.deck')
+const card = deck.querySelectorAll('li.card');
 let beginCards = [...card];
 
 let checkArray = [];
 let matchArray = [];
 
 let moves;
-let counter = document.querySelector('.moves');
+const counter = document.querySelector('.moves');
 
-let firstStar = document.getElementById('first');
-let secondStar = document.getElementById('second');
-let thirdStar = document.getElementById('third');
+const reset = document.querySelector('.restart');
+reset.addEventListener('click', startGame);
 
-let seconds = document.getElementById('sec');
-let minutes = document.getElementById('min');
+const firstStar = document.getElementById('first');
+const secondStar = document.getElementById('second');
+const thirdStar = document.getElementById('third');
+
+const seconds = document.getElementById('sec');
+const minutes = document.getElementById('min');
+let time;
 let sec;
 let min;
 let firstClick;
@@ -42,7 +46,7 @@ function startGame() {
   seconds.innerText = 0;
   minutes.innerText = 0;
   firstClick = true;
-
+  clearInterval(time);
 
   for(let card of shuffledCards) {
     deck.removeChild(deck.firstElementChild);
@@ -106,11 +110,9 @@ function checkCards() {
     let firstClass = checkArray[0].firstElementChild.classList.value;
     let secondClass = checkArray[1].firstElementChild.classList.value;
     if(firstClass === secondClass) {
-      console.log('bravo');
       match();
       checkArray = [];
     } else {
-      console.log('riprova');
       setTimeout(unmatch, 500); // slow the class removement to see animation
     }
     movesCounter();
@@ -198,13 +200,13 @@ function rating() {
 */
 
 function timer() {
-  setInterval(function() {
-        seconds.innerText++;
-        if (seconds.innerText == 60) {
-            minutes.innerText++;
-            seconds.innerText = 0;
-        }
-    }, 1000);
+  time = setInterval(function() {
+    seconds.innerText++;
+    if (seconds.innerText == 60) {
+      minutes.innerText++;
+      seconds.innerText = 0;
+    }
+  }, 1000);
 }
 
 startGame()
