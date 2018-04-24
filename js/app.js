@@ -1,32 +1,58 @@
-/*
- * Create a list that holds all of your cards.
- * With the spread operator is possible for the shuffle function to easily
- * access the single card elements.
- */
+// Cards and deck variables
 const  deck = document.querySelector('.deck')
 const card = deck.querySelectorAll('li.card');
 let beginCards = [...card];
 
+// Arrays for check and store matched elements
 let checkArray = [];
 let matchArray = [];
 
+// Counter variables
 let moves;
 const counter = document.querySelector('.moves_number');
 const counterText = document.querySelector('.moves_text');
 
+// Reset button element end event listener
 const reset = document.querySelector('.restart');
 reset.addEventListener('click', startGame);
 
+// Getting rating stars elements
 const firstStar = document.getElementById('first');
 const secondStar = document.getElementById('second');
 const thirdStar = document.getElementById('third');
 
+// Getting elements for timer and define firstclick
 const seconds = document.getElementById('sec');
 const minutes = document.getElementById('min');
 let time;
-let sec;
-let min;
 let firstClick;
+
+/*
+** Get modal elements and sets events listener on modal's elements
+*/
+// Get the modal
+const  modal = document.getElementById('winModal');
+// Get the <span> element that closes the modal
+const close = document.getElementsByClassName("close")[0];
+// Getting elements for setting modal contents
+const minutesNumber = document.getElementById('final_minutes_number');
+const minutesText = document.getElementById('final_minutes_text');
+const secondsNumber = document.getElementById('final_seconds_number');
+const secondsText = document.getElementById('final_seconds_text');
+const movesNumber = document.getElementById('final_moves_number');
+const modalButton = document.getElementById('restartModal');
+// When the user clicks on <span> (x), close the modal
+close.onclick = function() {
+    modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// When user click on button, hide modal and start a new game
+modalButton.addEventListener('click', modalRestart);
 
 /*
  * Display the cards on the page
@@ -40,12 +66,14 @@ function startGame() {
   let shuffledCards = shuffle(beginCards);
   let fragment = document.createDocumentFragment();
 
+  firstStar.classList.remove('fa-star-o');
+  secondStar.classList.remove('fa-star-o');
+  thirdStar.classList.remove('fa-star-o');
+
   moves = 0;
   counter.innerText = 0;
   counterText.innerText = " moves";
 
-  sec = 0
-  min = 0
   seconds.innerText = 0;
   minutes.innerText = 0;
   firstClick = true;
@@ -113,12 +141,13 @@ function checkCards() {
     let firstClass = checkArray[0].firstElementChild.classList.value;
     let secondClass = checkArray[1].firstElementChild.classList.value;
     if(firstClass === secondClass) {
+      movesCounter();
       match();
       checkArray = [];
     } else {
+      movesCounter();
       setTimeout(unmatch, 500); // slow the class removement to see animation
     }
-    movesCounter();
     rating();
   } else if (checkArray.length >= 3) {
     // doesn't show any card class after the 2nd clicked
@@ -167,6 +196,10 @@ function match() {
   checkArray[0].classList.add('match');
   checkArray[1].classList.add('match');
   matchArray.push(checkArray[0], checkArray[1]);
+  if (matchArray.length === 16) {
+    clearInterval(time);
+    endGame();
+  }
 }
 
 /*
@@ -189,14 +222,14 @@ function clearArray() {
 
 function rating() {
   if (moves === 9) {
-    thirdStar.classList.remove('fa-star');
-    thirdStar.classList.add('fa-star-o');
+    //thirdStar.classList.remove('fa-star');
+    thirdStar.classList.toggle('fa-star-o');
   } else if (moves === 14) {
-    secondStar.classList.remove('fa-star');
-    secondStar.classList.add('fa-star-o');
+    //secondStar.classList.remove('fa-star');
+    secondStar.classList.toggle('fa-star-o');
   } else if (moves === 19) {
-    firstStar.classList.remove('fa-star');
-    firstStar.classList.add('fa-star-o');
+    //firstStar.classList.remove('fa-star');
+    firstStar.classList.toggle('fa-star-o');
   }
 }
 
@@ -217,15 +250,38 @@ function timer() {
   }, 1000);
 }
 
-startGame()
+/*
+** Hide again the modal and then launch startGame when the modal button
+** is clicked by the user
+*/
+
+function modalRestart() {
+  modal.style.display = "none";
+  startGame();
+}
 
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+** When all the cards are matched, the modal pops up and fill the HTML
+** spans in the modal_message div with the currents values for minutes,
+** seconds and number of moves used
+*/
+
+function endGame() {
+  modal.style.display = 'block';
+  minutesNumber.innerText = minutes.textContent;
+  if (minutes.textContent === '1') {
+    minutesText.innerText = ' minute';
+  } else {
+    minutesText.innerText = ' minutes';
+  }
+  secondsNumber.innerText = seconds.textContent;
+  if (seconds.textContent === '1') {
+    secondsText.innerText = ' second';
+  } else {
+    secondsText.innerText = ' seconds';
+  }
+  movesNumber.innerText = moves;
+}
+
+
+startGame()

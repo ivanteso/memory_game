@@ -27,7 +27,7 @@
           </div>
 
           <div class="timer">
-            <span id="min"></span> min, <span id="sec"></span>sec
+            <span id="min"></span> min, <span id="sec"></span> sec
           </div>
 
           <div class="restart">Restart Game
@@ -85,6 +85,18 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+    </div>
+
+    <!--Modal-->
+    <div id="winModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="modal_message">Congratulation! You won! You have matched all the cards in <span id="final_minutes_number"></span><span id="final_minutes_text"></span> and <span id="final_seconds_number"></span><span id="final_seconds_text"></span>, in only <span id="final_moves_number"></span> moves. Can you do better?</p>
+        <button id="restartModal">TRY AGAIN!</button>
+      </div>
+
     </div>
 
     <script src="js/app.js"></script>
