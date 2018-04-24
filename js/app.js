@@ -11,7 +11,8 @@ let checkArray = [];
 let matchArray = [];
 
 let moves;
-const counter = document.querySelector('.moves');
+const counter = document.querySelector('.moves_number');
+const counterText = document.querySelector('.moves_text');
 
 const reset = document.querySelector('.restart');
 reset.addEventListener('click', startGame);
@@ -41,6 +42,7 @@ function startGame() {
 
   moves = 0;
   counter.innerText = 0;
+  counterText.innerText = " moves";
 
   sec = 0
   min = 0
@@ -132,6 +134,11 @@ function checkCards() {
 function movesCounter() {
   moves++;
   counter.textContent = moves;
+  if (moves === 1) {
+    counterText.innerText = " move";
+  } else {
+    counterText.innerText = " moves";
+  }
 }
 
 /*
