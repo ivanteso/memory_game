@@ -229,12 +229,9 @@ function rating() {
   if (moves >= 10 && moves < 15) {
     thirdStar.classList.add('fa-star-o');
     starsNumber = 2;
-  } else if (moves >= 15 && moves <20) {
+  } else if (moves >= 15) {
     secondStar.classList.add('fa-star-o');
     starsNumber = 1;
-  } else if (moves >= 20) {
-    firstStar.classList.add('fa-star-o');
-    starsNumber = 0;
   }
 }
 
