@@ -1,5 +1,5 @@
 // Cards and deck variables
-const  deck = document.querySelector('.deck')
+const  deck = document.querySelector('.deck');
 const card = deck.querySelectorAll('li.card');
 let beginCards = [...card];
 
