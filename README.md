@@ -6,14 +6,14 @@ This project is part of the __Frontend Web Developer Nanodegree (full Google sch
 
 * [Instructions](#instructions)
 * [Play](#play)
-* [Functionality](#functionality)
-* [Requirements](#requirements)
-* [Dependencied](#dependencies)
+* [Functionality](#play)
+* [Requirements](#functionality)
+* [Dependencies](#dependencies)
 * [Contributing](#contributing)
 
 ## Instructions
 
-A starter code containig just HTML and CSS was given to everybody and the main goal was to create a fully functional card matching game using all the JavaScript and DOM manipulation skills learnt since now. The final result is an interactive and multi device game.
+A starter code containing just HTML and CSS was given to everybody and the main goal was to create a fully functional card matching game using all the JavaScript and DOM manipulation skills learnt since now. The final result is an interactive and multi device game.
 The simple logic beyond the game is to pair is to pair all the 16 cards to win. In addiction, some extra features must be added in order to take track of some data (e.g. a moves counter and a timer) to make increase the code complexity.
 
 ## Play
@@ -22,12 +22,12 @@ If you'd like to play a full version of the game, just click [here!](http://html
 
 ## Functionality
 
-- __Shuffle Cards__: the cards are shiffled automatically every time a new game is started
+- __Shuffle Cards__: the cards are shuffled automatically every time a new game is started
 - __Match Check__: the game has a class system based function that check if the 2 cards clicked are the same or not
-- __Moves Counter__: a counter function increse by 1 the number of moves every time two cards are shown to the player
+- __Moves Counter__: a counter function increase by 1 the number of moves every time two cards are shown to the player
 - __Star Rating__: based on the moves number, the player get a star-based rate - __Timer__: it simply take track of the game time. It starts at the first card click and then stop when all the cards are matched
 - __Restart__: a button to restart the game
-- __End game modal__: once the game is fnished, a congratulation modal appear reporting the game results (time, stars gained and number of moves) and a button to restart the game
+- __End game modal__: once the game is finished, a congratulation modal appear reporting the game results (time, stars gained and number of moves) and a button to restart the game
 
 ## Requirements
 
