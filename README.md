@@ -31,11 +31,11 @@ If you'd like to play a full version of the game, just click [here!](http://html
 
 ## Requirements
 
-The game has to follow some code criteria in order to satisfy the project specifications. The full detailed list of the requirements is available to consult at the [Project Rubric Link](https://review.udacity.com/#!/rubrics/591/view)
+The game has to follow some code criteria in order to satisfy the project specifications. The full detailed list of the requirements is available to consult at the [Project Rubric Link](https://review.udacity.com/#!/rubrics/591/view).
 
 ## Dependencies
 
-The project is created starting from the original [Udacity's Project](https://github.com/udacity/fend-project-memory-game)
+The project is created starting from the original [Udacity's Project](https://github.com/udacity/fend-project-memory-game).
 
 I've used the following resources in order to complete the project:
 
