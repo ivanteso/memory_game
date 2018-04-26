@@ -117,15 +117,20 @@ function shuffle(array) {
 function flip() {
   let clicked = this;
   storeCard(clicked);
-  checkCards();
   if (firstClick === true) {
     timer();
     firstClick = false;
   }
+  if (checkArray.length === 1) {
   clicked.classList.toggle('open');
   clicked.classList.toggle('show');
   clicked.removeEventListener('click', flip);
-
+  } else if (checkArray.length === 2) {
+  clicked.classList.toggle('open');
+  clicked.classList.toggle('show');
+  clicked.removeEventListener('click', flip);
+  checkCards();
+  }
 }
 
 // Store the clicked card into checkArray
@@ -141,7 +146,6 @@ function storeCard(a) {
 
 function checkCards() {
 
-  if (checkArray.length > 1 && checkArray.length <= 2) {
     let firstClass = checkArray[0].firstElementChild.classList.value;
     let secondClass = checkArray[1].firstElementChild.classList.value;
     if(firstClass === secondClass) {
@@ -154,10 +158,6 @@ function checkCards() {
       rating();
       setTimeout(unmatch, 500); // slow the class removement to see animation
     }
-  } else if (checkArray.length >= 3) {
-    // doesn't show any card class after the 2nd clicked
-    clearArray();
-  }
 }
 
 /*
@@ -212,14 +212,14 @@ function match() {
 ** undefined returned value because of the animation delay of the unmatch
 ** function called on checkCards()
 */
-
+/*
 function clearArray() {
   checkArray[2].classList.remove('open');
   checkArray[2].classList.remove('show');
   checkArray[3].classList.remove('open');
   checkArray[3].classList.remove('show');
 }
-
+*/
 /*
 ** Based on the moves number remove the plai star class and add the
 ** empty star class. 3 plain stars is the perfect game, and so on
