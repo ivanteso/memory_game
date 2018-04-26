@@ -6,8 +6,8 @@ This project is part of the __Frontend Web Developer Nanodegree (full Google sch
 
 * [Instructions](#instructions)
 * [Play](#play)
-* [Functionality](#play)
-* [Requirements](#functionaity)
+* [Functionality](#functionality)
+* [Requirements](#requirements)
 * [Dependencied](#dependencies)
 * [Contributing](#contributing)
 
