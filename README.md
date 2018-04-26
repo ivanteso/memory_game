@@ -1,6 +1,6 @@
 # Memory Game, a Udacity's project (WORK IN PROGRESS)
 
-This project is part of the __Frontend Web Developer Nanodegree (full Google scholarship__. The primary purpose of this project is to test and show the progress made using pure JavaScript to convert a static page in a fully functional web application.
+This project is part of the __Frontend Web Developer Nanodegree (full Google scholarship)__. The primary purpose of this project is to test and show the progress made using pure JavaScript to convert a static page in a fully functional web application.
 
 ## Table of Contents
 
