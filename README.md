@@ -35,12 +35,12 @@ The game has to follow some code criteria in order to satisfy the project specif
 
 ## Dependencies
 
-- The project is created starting from the original [Udacity's Project](https://github.com/udacity/fend-project-memory-game)
+The project is created starting from the original [Udacity's Project](https://github.com/udacity/fend-project-memory-game)
 
 I've used the following resources in order to complete the project:
 
 __Javascript:__
--[VanillaJS](http://vanilla-js.com/)
+- [VanillaJS](http://vanilla-js.com/)
 - [Shuffle function](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/2450976#2450976)
 
 __CSS & HTML__
