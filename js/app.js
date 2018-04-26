@@ -76,6 +76,7 @@ function startGame() {
   moves = 0;
   counter.innerText = 0;
   counterText.innerText = " moves";
+  matchArray = [];
 
   seconds.innerText = 0;
   minutes.innerText = 0;
