@@ -18,7 +18,7 @@ The simple logic beyond the game is to pair is to pair all the 16 cards to win. 
 
 ## Play
 
-If you'd like to play a full version of the game, just click [here!](http://htmlpreview.github.io/?https://github.com/ivanteso/memory_game_WIP/blob/master/index.html) and enjoy.
+If you'd like to play a full version of the game, just click [here!https://ivanteso.github.io/memory_game_WIP/) and enjoy.
 
 ## Functionality
 
